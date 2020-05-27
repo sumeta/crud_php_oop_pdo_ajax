@@ -3,7 +3,7 @@
 	class Database {
 		private $dsn = "mysql:host=localhost;dbname=scitech";
 		private $user = "root";
-		private $pass = "";
+		private $pass = "root";
 		public $conn;
 
 		public function __construct() {
@@ -53,7 +53,7 @@
 		}
 
 		public function delete($id) {
-			$ql = "DELETE FROM users WHERE id = :id";
+			$sql = "DELETE FROM users WHERE id = :id";
 			$stmt = $this->conn->prepare($sql); 
 			$stmt->execute(['id'=>$id]);
 			return true;

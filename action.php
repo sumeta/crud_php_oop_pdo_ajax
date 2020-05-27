@@ -34,7 +34,7 @@
 
 						<a href="#" title="Edit" class="text-primary editBtn" data-toggle="modal" data-target="#editModal" id="'.$row['id'].'"><i class="fas fa-edit fa-lg"></i></a>&nbsp;&nbsp;	
 
-						<a href="action.php?export=excel" title="Delete" class="text-danger delBtn" d="'.$row['id'].'"><i class="fas fa-trash fa-lg"></i></a>
+						<a href="action.php?export=excel" title="Delete" class="text-danger delBtn" id="'.$row['id'].'"><i class="fas fa-trash fa-lg"></i></a>
 					</td></tr>';				# code...
 			}
 			$output .= '</tbody></table>';
