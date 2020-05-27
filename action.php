@@ -8,8 +8,8 @@
 		$data = $db->read();
 		//print_r($data);
 		if ($db->totalRowCount()>0) {
-			$output .= '<table class="table table-striped table-sm table-bordered">
-							<thread>
+			$output .= '<table id="table" class="table table-striped table-sm table-bordered">
+							<thead>
 								<tr 
 								class="text-center">
  									<th>ID</th>
@@ -19,7 +19,7 @@
 									<th>Phone</th>
 									<th>Action</th>
  								</tr>
-							</thread>
+							</thead>
 							<tbody>';
 			foreach ($data as $row) {
 				$output .= '<tr class="text-center text-secondary">
