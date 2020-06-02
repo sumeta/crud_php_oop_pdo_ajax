@@ -52,16 +52,16 @@
 		}
 
 
-		public function update($id, $tpos_academic, $tdoctor, $fname, $lname, $ttypeP, $tdeptP,    $tdateBorn, $tdateWork) {
+		public function update($id, $tpos_academic, $tdoctor, $fname, $lname, $ttypeP, $tdeptP, $tdateBorn, $tdateWork) {
 			$sql =  "UPDATE users SET 
-			pos_academic	=:	tpos_academic, 
-			doctor			=:	tdoctor,
-			first_name		=:	fname, 
-			last_name		=:	lname, 
-			typeP			=:	ttypeP, 
-			deptP			=:	deptP, 
-			dateBorn		=:	tdateBorn, 
-			dateWork		=:	tdateWork 
+			pos_academic	=:tpos_academic, 
+			doctor			=:tdoctor,
+			first_name		=:fname, 
+			last_name		=:lname, 
+			typeP			=:ttypeP, 
+			deptP			=:tdeptP, 
+			dateBorn		=:tdateBorn, 
+			dateWork		=:tdateWork 
 			WHERE id = :id";
 			$stmt = $this->conn->prepare($sql);
 			$stmt->execute(['id'			=>$id,
