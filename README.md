@@ -9,4 +9,4 @@ docker run --name php-crud -p 8080:80 -v d:/crud_php_oop_pdo_ajax:/usr/share/ngi
 
 
 ### Screenshot
-![alt text](https://raw.githubusercontent.com/sumeta/php-crud-oop-pdo-ajax/master/Screenshot.jpg "Logo Title Text 1")
+![alt text](https://raw.githubusercontent.com/sumeta/php-crud-oop-pdo-ajax/master/Screenshot/index.jpg "Logo Title Text 1")

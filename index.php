@@ -12,39 +12,24 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
  	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.css"/>
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-	<!--
-		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/b-1.6.2/b-html5-1.6.2/r-2.2.5/sp-1.1.1/datatables.min.css"/>
-		<link rel="stylesheet" href="jquery/dataTables.bootstrap.min.css" />  
 
-		-->
-		
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!--
+ 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/b-1.6.2/b-html5-1.6.2/r-2.2.5/sp-1.1.1/datatables.min.css"/>
+	<link rel="stylesheet" href="jquery/dataTables.bootstrap.min.css" />  
 
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    -->
 
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 
-	<!-- Popper JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
-
-	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.js"></script>
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
 
  </head>
-
- 
-
-
 	 <body>
-		  
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 		  <!-- Brand -->
 		  <a class="navbar-brand" href="#"><i class="fab fa-wolf-pack-battalion"></i>&nbsp;Sci&Tech SDU</a>
@@ -73,6 +58,7 @@
 		  </div>
 		</nav>
 
+		<!---     --->
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -81,11 +67,14 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-6">
-					<h4 class="mt-2 text-primary"> บุคลากรของคณะวิทย์</h4>
+					<h4 class="mt-2 text-primary">รายชื่อบุคลากรสายวิชาการ</h4>
 				</div>
 				<div class="col-lg-6">
 					<button type="button" class="btn btn-primary m-1 float-right" data-toggle="modal" data-target="#addModal"> <i class="fas fa-user-plus fa-lg"></i> &nbsp;&nbsp;Add New User</button>
+
 					 <a href="action.php?export=excel" class = "btn btn-success m-1 float-right"><i class="fas fa-table fa-lg"></i>&nbsp;&nbsp;Export to Excel</a>
+
+				</div> 
 				</div> 
 			</div>
 			<hr class="my-1">
@@ -99,7 +88,6 @@
 			</div>
 		</div> 
 
-		<!---     --->
 		 <!-- Add New User Modal -->
 		  <div class="modal fade" id="addModal">
 		    <div class="modal-dialog modal-dialog-centered">
@@ -114,20 +102,37 @@
 		        <!-- Modal body -->
 		        <div class="modal-body px-4">
 		          <form action=" " method="post" id="form-data">
+
 		          	<div class="form-group">
-		          		<input type="text" name="fname" class="form-control" placeholder="First Name" required="">
+		          		<input type="text"  name="tpos_academic" class="form-control" placeholder="ตำแหน่งทางวิชาการ" required="">
 		          	</div>
 
 		          	<div class="form-group">
-		          		<input type="text" name="lname" class="form-control" placeholder="Last Name" required="">
+		          		<input type="text" name="tdoctor" class="form-control" placeholder="ดร." required="">
 		          	</div>
 
 		          	<div class="form-group">
-		          		<input type="email" name="email" class="form-control" placeholder="E-Mail" required="">
+		          		<input type="text" name="fname" class="form-control" placeholder="ชื่อ" required="">
 		          	</div>
 
 		          	<div class="form-group">
-		          		<input type="tel" name="phone" class="form-control" placeholder="Phone" required="">
+		          		<input type="text" name="lname" class="form-control" placeholder="สกุล" required="">
+		          	</div>
+
+		          	<div class="form-group">
+		          		<input type="text" name="ttypeP" class="form-control" placeholder="ประเภท" required="">
+		          	</div>
+
+		          	<div class="form-group">
+		          		<input type="text" name="tdeptP" class="form-control" placeholder="สังกัด" required="">
+		          	</div>
+
+					<div class="form-group">
+		          		<input type="text" name="tdateBorn" class="form-control" placeholder="วันเดือนปีเกิด" required="">
+		          	</div>
+
+		          	<div class="form-group">
+		          		<input type="text" name="tdateWork" class="form-control" placeholder="วันเริ่มงาน" required="">
 		          	</div>
 
 		          	<div class="form-group">
@@ -157,39 +162,73 @@
 
 		          <form action=" " method="post" id="edit-form-data">
 		          	<input type="hidden" name="id" id="id">
+
 		          	<div class="form-group">
-		          		<input type="text" name="fname" class="form-control" id="fname" required="">
+		          		<input type="text" id="tpos_academic" name="tpos_academic" class="form-control" placeholder="ตำแหน่งทางวิชาการ" required="">
 		          	</div>
 
 		          	<div class="form-group">
-		          		<input type="text" name="lname" class="form-control" id="lname" required="">
+		          		<input type="text" id="tdoctor" name="tdoctor" class="form-control" 
+		          		placeholder="ดร." required="">
+		          	</div>
+		          	<div class="form-group">
+		          		<input type="text" id="fname" name="fname" class="form-control" 
+		          		placeholder="ชื่อ" required="">
 		          	</div>
 
 		          	<div class="form-group">
-		          		<input type="email" name="email" class="form-control" id="email" required="">
+		          		<input type="text" id="lname"  name="lname" class="form-control" 
+		          		placeholder="สกุล" required="">
 		          	</div>
 
 		          	<div class="form-group">
-		          		<input type="tel" name="phone" class="form-control" id="phone" required="">
+		          		<input type="text" id="ttypeP" name="ttypeP" class="form-control" 
+		          		placeholder="ประเภท" required="">
 		          	</div>
+
+		          	<div class="form-group">
+		          		<input type="text" id="tdeptP" name="tdeptP" class="form-control" 
+		          		placeholder="สังกัด" required="">
+		          	</div>
+
+					<div class="form-group">
+		          		<input type="text" id="tdateBorn" name="tdateBorn" class="form-control" 
+		          		placeholder="วันเดือนปีเกิด" required="">
+		          	</div>
+
+		          	<div class="form-group">
+		          		<input type="text" id="tdateWork" name="tdateWork" class="form-control" 
+		          		placeholder="วันเริ่มงาน" required="">
+		          	</div>
+		          	 
 
 		          	<div class="form-group">
 		          		<input type="submit" name="update" id="update" value="Update User" class="btn btn-primary btn-block">
 		          	</div>
 
 		          </form>
-		        </div>
-		        
+		        </div>		        
 		      </div>
 		    </div>
 		  </div>
 
 
+		
+
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 		<script type="text/javascript">
 			$(document).ready(function() {
 				 
-
 				showAllUsers();
 
 				function showAllUsers() {
@@ -203,8 +242,7 @@
 							$("#showUser").html(response);
 							$("#table").DataTable({
 								order: [[0,'desc']]
-							});
-							 
+							});							 
 						}
 					});
 				}
@@ -243,11 +281,14 @@
 							//console.log(response);
 							data = JSON.parse(response);
 							$("#id").val(data.id);
+							$("#tpos_academic").val(data.pos_academic);
+							$("#tdoctor").val(data.doctor);
 							$("#fname").val(data.first_name);
 							$("#lname").val(data.last_name);
-							$("#email").val(data.email);
-							$("#phone").val(data.phone);
-							 
+							$("#ttypeP").val(data.typeP);
+							$("#tdeptP").val(data.deptP);
+							$("#tdateBorn").val(data.dateBorn);
+							$("#tdateWork").val(data.dateWork); 
 						}
 					});
 				});
@@ -316,18 +357,17 @@
 						type:"POST",
 						data:{info_id:info_id},
 						success:function(response) {
-							//console.log(response);
+							console.log(response);
 							data = JSON.parse(response);
 							Swal.fire({
 								title:'<strong>User Info : ID('+data.id+')</strong>',
-								type: 'info',
-								html: '<b>First Name : </b>'+data.first_name+'<br><b>Last Name: </b>'+data.last_name+'<br><b>Email : </b>'+data.email+'<br><b>Phone : </b>'+data.phone,
+						 		type: 'info',
+								html: '<b>Fname: </b>'+data.first_name,
 								showCancelButton: true,
 							});
 						}
 					});
 				});
-
 			});
 		</script>
 	</body>

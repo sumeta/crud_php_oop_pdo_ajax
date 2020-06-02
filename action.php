@@ -13,10 +13,14 @@
 								<tr 
 								class="text-center">
  									<th>ID</th>
-									<th>FName</th>	
-									<th>LName</th>
-									<th>Email</th> 
-									<th>Phone</th>
+ 									<th>ตำแหน่งทางวิชาการ</th>
+ 									<th>ป.เอก</th>
+									<th>ชื่อ</th>	
+									<th>สกุล</th>
+									<th>ประเภท</th>
+									<th>สังกัด</th>
+							 		<th>วันเดือนปีเกิด</th>
+							 		<th>วันที่เริ่มงาน</th>
 									<th>Action</th>
  								</tr>
 							</thead>
@@ -24,17 +28,22 @@
 			foreach ($data as $row) {
 				$output .= '<tr class="text-center text-secondary">
 
-					<td>'.$row['id'].'</td>
-					<td>'.$row['first_name'].'</td>
-					<td>'.$row['last_name'].'</td>
-					<td>'.$row['email'].'</td>
-					<td>'.$row['phone'].'</td>
+					<td>'.$row['id'].'				</td>
+					<td>'.$row['pos_academic'].'	</td>
+					<td>'.$row['doctor'].'			</td>
+					<td>'.$row['first_name'].'		</td>
+					<td>'.$row['last_name'].'		</td>
+					<td>'.$row['typeP'].'			</td>
+					<td>'.$row['deptP'].'			</td>
+					<td>'.$row['dateBorn'].'		</td>
+					<td>'.$row['dateWork'].'		</td>
 					<td>
-						<a href="#" title="View Details" class="text-success infoBtn id="'.$row['id'].'"><i class="fas fa-info-circle fa-lg"></i></a>&nbsp;&nbsp;	
+		<a href="#" title="View Details" class="text-success infoBtn" id="'.$row['id'].'"><i class="fas fa-info-circle fa-lg"></i></a>&nbsp;&nbsp;	
 
-						<a href="#" title="Edit" class="text-primary editBtn" data-toggle="modal" data-target="#editModal" id="'.$row['id'].'"><i class="fas fa-edit fa-lg"></i></a>&nbsp;&nbsp;	
+		<a href="#" title="Edit" class="text-primary editBtn" data-toggle="modal" data-target="#editModal" id="'.$row['id'].'"><i class="fas fa-edit fa-lg"></i></a>&nbsp;&nbsp;	
 
-						<a href="action.php?export=excel" title="Delete" class="text-danger delBtn" id="'.$row['id'].'"><i class="fas fa-trash fa-lg"></i></a>
+		<a href="action.php?export=excel" title="Delete" class="text-danger delBtn" id="'.$row['id'].'"><i class="fas fa-trash fa-lg"></i></a>
+
 					</td></tr>';				# code...
 			}
 			$output .= '</tbody></table>';
@@ -46,13 +55,16 @@
 	}
 
 	if (isset($_POST['action']) && $_POST['action']=="insert") {
-		$fname = $_POST['fname'];
-		$lname = $_POST['lname'];
-		$email = $_POST['email'];
-		$phone = $_POST['phone'];
+		$tpos_academic = $_POST['tpos_academic'];
+		$tdoctor       = $_POST['tdoctor'];
+		$fname 		   = $_POST['fname'];
+		$lname 		   = $_POST['lname'];
+		$ttypeP        = $_POST['ttypeP'];
+		$tdeptP        = $_POST['tdeptP'];
+		$tdateBorn     = $_POST['tdateBorn'];
+		$tdateWork     = $_POST['tdateWork'];
 
-
-		$db->insert($fname,$lname,$email,$phone);
+		$db->insert($tpos_academic,$tdoctor,$fname,$lname,$ttypeP,$tdeptP,$tdateBorn,$tdateWork);
 	}
 
 
@@ -64,14 +76,18 @@
  	}
 
  	if (isset($_POST['action']) && $_POST['action']=="update") {
-		$id = $_POST['id'];
-		$fname = $_POST['fname'];
-		$lname = $_POST['lname'];
-		$email = $_POST['email'];
-		$phone = $_POST['phone'];
-
 		
-		$db->update($id,$fname,$lname,$email,$phone);
+		$id 		   = $_POST['id'];
+		$tpos_academic = $_POST['tpos_academic'];
+		$tdoctor       = $_POST['tdoctor'];
+		$fname 		   = $_POST['fname'];
+		$lname 		   = $_POST['lname'];
+		$ttypeP        = $_POST['ttypeP'];
+		$tdeptP        = $_POST['tdeptP'];
+		$tdateBorn     = $_POST['tdateBorn'];
+		$tdateWork     = $_POST['tdateWork'];
+	
+		$db->update($id,$tpos_academic,$tdoctor,$fname,$lname,$ttypeP,$tdeptP,$tdateBorn,         $tdateWork);
   	}
 
   	if (isset($_POST['del_id'])) {
@@ -97,18 +113,25 @@
 
 		$data = $db->read();
 		echo '<table border="1">';
-		echo '<tr><th>ID</th><th>First Name</th><th>Last Name</th><th> Email</th><th>Phone</th></tr>';
+		echo '<tr><th>ID</th> <th>ตำแหน่งทางวิชาการ</th> <th>ดร.</th> <th>ชื่อ</th><th>สกุล</th><th> ประเภท</th><th>สังกัด</th><th> วันเดือนปีเกิด</th><th>วันที่เริ่มงาน</th></tr>';
 
 		foreach ($data as $row ) {
 			echo '<tr>
-			<td>'.$row['id'].'</td>
-			<td>'.$row['first_name'].'</td>
-			<td>'.$row['last_name'].'</td>
-			<td>'.$row['email'].'</td>
-			<td>'.$row['phone'].'</td>
+			<td>'.$row['id'].'				</td>
+			<td>'.$row['pos_academic'].'	</td>
+			<td>'.$row['doctor'].'			</td>
+			<td>'.$row['first_name'].'		</td>
+			<td>'.$row['last_name'].'		</td>
+			<td>'.$row['typeP'].'			</td>
+			<td>'.$row['deptP'].'			</td>
+			<td>'.$row['dateBorn'].'		</td>
+			<td>'.$row['dateWork'].'		</td> 
 			</tr>';
 		}
 		echo '</table>';
  	}
+
+
+
 
 ?>

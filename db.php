@@ -16,10 +16,17 @@
 			}
 		}
 
-		public function insert($fname, $lname, $email, $phone) {
-			$sql = "INSERT INTO  users (first_name, last_name, email, phone) VALUES (:fname,:lname,:email,:phone)";
+		public function insert($tpos_academic, $tdoctor, $fname, $lname, $ttypeP, $tdeptP, $tdateBorn, $tdateWork) {
+			$sql = "INSERT INTO  users (pos_academic, doctor, first_name, last_name, typeP, deptP, dateBorn, dateWork) VALUES (:tpos_academic,:tdoctor,:fname,:lname,:ttypeP,:tdeptP,:tdateBorn,:tdateWork)";
 			$stmt = $this->conn->prepare($sql);
-			$stmt->execute(['fname'=>$fname,'lname'=>$lname,'email'=>$email,'phone'=>$phone]);
+			$stmt->execute(['tpos_academic' =>$tpos_academic,
+				            'tdoctor'		=>$tdoctor,
+				            'fname'			=>$fname,
+				            'lname'			=>$lname,
+				            'ttypeP'		=>$ttypeP,
+				            'tdeptP'		=>$tdeptP,
+				            'tdateBorn'		=>$tdateBorn,
+				            'tdateWork'		=>$tdateWork]);
 
 			return true;
 		}
@@ -45,10 +52,27 @@
 		}
 
 
-		public function update($id, $fname, $lname, $email, $phone) {
-			$sql =  "UPDATE users SET first_name=:fname, last_name=:lname, email=:email, phone=:phone WHERE id = :id";
+		public function update($id, $tpos_academic, $tdoctor, $fname, $lname, $ttypeP, $tdeptP,    $tdateBorn, $tdateWork) {
+			$sql =  "UPDATE users SET 
+			pos_academic	=:	tpos_academic, 
+			doctor			=:	tdoctor,
+			first_name		=:	fname, 
+			last_name		=:	lname, 
+			typeP			=:	ttypeP, 
+			deptP			=:	deptP, 
+			dateBorn		=:	tdateBorn, 
+			dateWork		=:	tdateWork 
+			WHERE id = :id";
 			$stmt = $this->conn->prepare($sql);
-			$stmt->execute(['fname'=>$fname,'lname'=>$lname,'email'=>$email,'phone'=>$phone,'id'=>$id]);
+			$stmt->execute(['id'			=>$id,
+							'tpos_academic'	=>$tpos_academic,   
+				            'tdoctor'		=>$tdoctor,
+				            'fname'			=>$fname,
+				            'lname'			=>$lname, 
+				            'ttypeP'		=>$ttypeP,
+				            'tdeptP'		=>$tdeptP,
+				            'tdateBorn'		=>$tdateBorn,
+				            'tdateWork'		=>$tdateWork]);
 			return true;
 		}
 
